@@ -45,6 +45,14 @@
         position: relative;
         z-index: 20;
     }
+
+    .zipcodefield {
+        width: 80%;
+    }
+
+    .kindofvickle input {
+        width: 100%;
+    }
 }
 
 
@@ -148,6 +156,10 @@
     .review {
         width: 100%;
     }
+
+    .userdata_block input {
+        width: 100%;
+    }
 }
 
 
@@ -168,7 +180,7 @@
 
     .gaqftcs {
         font-size: 33px;
-    }    
+    }
 
     .theprogesslefttop {
         width: 4rem;
@@ -183,8 +195,8 @@
         width: 100%;
     }
 
-    .wwoph1rev{
-        width: 100%;
+    .wwoph1rev {
+        width: 90%;
     }
 
     .footertitle {
@@ -193,5 +205,26 @@
 
     .footerblockdown {
         font-size: 18px;
+    }
+
+    .review {
+        padding: 28px 30px;
+    }
+
+    .details {
+        padding: 30px 27px;
+    }
+
+    .zipcodefield {
+        width: 90%;
+    }
+
+    .veriations_ {
+        display: grid;
+        width: 100%;
+    }
+
+    .variation {
+        width: 100%;
     }
 }

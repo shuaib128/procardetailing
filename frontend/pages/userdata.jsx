@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
+import Header from '../utils/Header';
+import Footer from '../utils/Footer';
 
-const userdata = () => {
+const Userdata = () => {
     //Get data from previous page
     const router = useRouter();
     const data = router.query;
+    const [loadign, setloadign] = useState(false)
+    const [NumberOrnot, setNumberOrnot] = useState(false)
 
     //States for inputs
     const [FirstName, setFirstName] = useState("")
@@ -42,98 +46,137 @@ const userdata = () => {
 
     //go to calenderpage
     const gotopayments = () => {
-        router.push({
-            pathname: '/calender',
-            query: {
-                name: data.name,
-                price: data.price,
-                body: data.body,
-                image: data.image,
-                zipcode: data.zipcode,
-                Appertment: data.Appertment,
-                Mold: data.Mold,
-                PetHair: data.PetHair,
-                Good: data.Good,
-                Bad: data.Bad,
-                Excellent: data.Excellent,
-                Car: data.Car,
-                FirstName,
-                LastName,
-                Email,
-                PhoneNumber,
-                PhoneCallMe,
-                EmailMe,
-                TextMe
+        const re = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/
+        const ok = re.test(PhoneNumber);
+        setloadign(true)
+
+        if (ok) {
+            try {
+                router.push({
+                    pathname: 'Calender',
+                    query: {
+                        name: data.name,
+                        price: data.price,
+                        body: data.body,
+                        zipcode: data.zipcode,
+                        Appertment: data.Appertment,
+                        Mold: data.Mold,
+                        PetHair: data.PetHair,
+                        Good: data.Good,
+                        Bad: data.Bad,
+                        Excellent: data.Excellent,
+                        Car: data.Car,
+                        FirstName,
+                        LastName,
+                        Email,
+                        PhoneNumber,
+                        PhoneCallMe,
+                        EmailMe,
+                        TextMe,
+                        variation_datas: JSON.stringify(JSON.parse(data.variation_datas))
+                    }
+                })
+            } catch (error) {
+                console.log(error);
+                setloadign(false)
             }
-        })
+        } else {
+            setNumberOrnot(true)
+            setloadign(false)
+        }
     }
 
     return (
-        <div className='userdata'>
-            <div className="userdata_block">
-                <input
-                    type="text"
-                    placeholder='First Name'
-                    onChange={e => setFirstName(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder='Last Name'
-                    onChange={e => setLastName(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder='Email'
-                    onChange={e => setEmail(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder='Phone Number'
-                    onChange={e => setPhoneNumber(e.target.value)}
-                />
+        <>
+            <Header />
+            <div className='userdata zipcodefield'>
+                <p className="whreal">Last step! How can we reach you?</p>
+                <div className="userdata_block">
+                    <input
+                        type="text"
+                        placeholder='First Name'
+                        onChange={e => setFirstName(e.target.value)}
+                    />
+                    <input
+                        type="text"
+                        placeholder='Last Name'
+                        onChange={e => setLastName(e.target.value)}
+                    />
+                    <input
+                        type="text"
+                        placeholder='Email'
+                        onChange={e => setEmail(e.target.value)}
+                    />
+                    {!NumberOrnot ?
+                        <input
+                            type="text"
+                            placeholder='Phone Number'
+                            onChange={e => setPhoneNumber(e.target.value)}
+                        /> :
+                        <>
+                            <span style={{position: "relative"}}>
+                                <input
+                                    className='notnumber'
+                                    type="text"
+                                    placeholder='Phone Number'
+                                    onChange={e => setPhoneNumber(e.target.value)}
+                                />
+                                <p className='notnumberp'>Please use a standard 10-digit phone number</p>
+                            </span>
+                        </>
+                    }
+                </div>
+
+                <div className="contact_me_by">
+                    <p className="contact_me_by_p">You can contact me by</p>
+
+                    <div className="contatyoublocks">
+                        <div className="contact_me_by_check">
+                            <input
+                                type="checkbox"
+                                className='short'
+                                onChange={checkUncheck}
+                                name="phonecall"
+                            />
+                            <label style={{marginLeft: "10px"}}>Phone Call</label>
+                        </div>
+
+                        <div className="contact_me_by_check">
+                            <input
+                                type="checkbox"
+                                className='short'
+                                onChange={checkUncheck}
+                                name="email"
+                            />
+                            <label style={{marginLeft: "10px"}}>Email</label>
+                        </div>
+
+                        <div className="contact_me_by_check">
+                            <input
+                                type="checkbox"
+                                className='short'
+                                onChange={checkUncheck}
+                                name="sms"
+                            />
+                            <label style={{marginLeft: "10px"}}>SMS/text</label>
+                        </div>
+                    </div>
+                </div>
+
+                {!loadign ?
+                    <button className="service_booking_btn"
+                        onClick={gotopayments}
+                    >
+                        Next
+                    </button> :
+                    <button className="service_booking_btn" disabled>
+                        Loading...
+                    </button>
+                }
             </div>
-
-            <div className="contact_me_by">
-                <p className="contact_me_by_p">You can contact me by</p>
-
-                <div className="contact_me_by_check">
-                    <input
-                        type="checkbox"
-                        className='short'
-                        onChange={checkUncheck}
-                        name="phonecall"
-                    />
-                    <label>Phone Call</label>
-                </div>
-
-                <div className="contact_me_by_check">
-                    <input
-                        type="checkbox"
-                        className='short'
-                        onChange={checkUncheck}
-                        name="email"
-                    />
-                    <label>Email</label>
-                </div>
-
-                <div className="contact_me_by_check">
-                    <input
-                        type="checkbox"
-                        className='short'
-                        onChange={checkUncheck}
-                        name="sms"
-                    />
-                    <label>SMS/text</label>
-                </div>
-            </div>
-
-            <button className="service_booking_btn"
-                onClick={gotopayments}
-            >
-                Next
-            </button>
-        </div>
+            <Footer />
+        </>
     )
 }
 
-export default userdata
+export default Userdata

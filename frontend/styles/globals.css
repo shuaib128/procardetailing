@@ -12,6 +12,16 @@ body h1 {
   margin: 0px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  color: white;
+  opacity: 1;
+  background: #ff6433;
+}
+
 body img {
   width: 100%;
   height: 100%;
@@ -863,10 +873,13 @@ a {
   right: 0;
 }
 
-.zipcode {}
+.zipcode {
+  margin-top: 180px;
+  margin-bottom: 175px;
+}
 
 .zipcodefield {
-  width: 65%;
+  width: 60rem;
   margin: 0 auto;
   margin-top: 20px;
 }
@@ -897,28 +910,20 @@ a {
   font-weight: 400;
   font-style: normal;
   font-size: 1rem;
-  height: 3rem;
+  height: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-style: solid;
   border-width: 2px;
   letter-spacing: 0px;
-  width: 365px;
+  width: 239px;
   text-align: center;
   white-space: nowrap;
-  padding: 0.75rem 1.75rem;
-  background: rgb(130, 35, 210);
-  border-color: rgb(130, 35, 210);
   color: rgb(255, 255, 255);
   cursor: pointer;
   margin: 0 auto;
   margin-top: 30px;
-}
-
-.zipcodebutton:hover {
-  background: rgb(169 66 255);
-  border-color: rgb(169 66 255)
 }
 
 .zipcodeinput:focus::placeholder {
@@ -926,18 +931,61 @@ a {
 }
 
 .agree {
-  width: 80rem;
+  width: 60rem;
   margin: 0 auto;
   margin-top: 50px;
+  margin-top: 200px;
+  margin-bottom: 175px;
 }
 
 .questions_block {}
 
-.question_block {}
+.question_block {
+  display: flex;
+  margin-bottom: 25px;
+  border: 1px solid rgb(165, 170, 175);
+  padding: 23px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.question_block:hover {
+  border: 1px solid black;
+}
+
+.answer {
+  margin-left: 10px;
+}
+
+.answer input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+}
 
 .question {
   display: flex;
   align-items: center;
+}
+
+.kindofvickle {
+  display: block;
+}
+
+.kindofvickle .answer {
+  margin: 0;
+}
+
+.kindofvickle input {
+  width: 50%;
+  height: 46px;
+  margin-top: 20px;
+  padding: 0px 20px;
+}
+
+.question p {
+  font-size: 20px;
 }
 
 .question svg {
@@ -949,9 +997,13 @@ a {
   width: 60rem;
   margin: 0 auto;
   margin-top: 50px;
+  margin-top: 200px;
+  margin-bottom: 175px;
 }
 
-.userdata_block {}
+.userdata_block {
+  margin-top: 38px;
+}
 
 .userdata_block input {
   width: 49%;
@@ -967,12 +1019,172 @@ a {
 
 .contact_me_by_p {}
 
-.contact_me_by_check {}
+.contact_me_by_check {
+  margin-right: 15px;
+}
 
 .calender {
   width: 60rem;
   margin: 0 auto;
-  margin-top: 30px;
+  margin-top: 50px;
+  margin-top: 200px;
+  margin-bottom: 175px;
+}
+
+.user_message {
+  margin-top: 25px;
+  height: 100px;
+  width: 100%;
+  padding: 10px 10px
+}
+
+.Varition {
+  width: 60rem;
+  margin: 0 auto;
+  margin-top: 200px;
+  margin-bottom: 175px;
+}
+
+.variation {
+  background: #ff6433;
+  margin-top: 13px;
+  color: white;
+  padding: 22px 25px;
+  font-size: 22px;
+  margin-right: 24px;
+  cursor: pointer;
+}
+
+.var {
+  cursor: pointer;
+}
+
+.varitionPrice {
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.veriations_ {
   display: flex;
-  flex-direction: column;
+  margin: 0 auto;
+  width: fit-content;
+  margin-top: 16px;
+}
+
+.zipcodetopsec {}
+
+.ziptoptitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.whreal {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  margin-top: 28px;
+}
+
+.whrel_title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom: 3rem;
+  margin-top: 10px;
+}
+
+.contatyoublocks {
+  display: flex;
+  margin-top: 5px;
+}
+
+.carconditioncheckboxstop {
+  display: block;
+  margin-top: 20px;
+}
+
+.carconditioncheckboxs {
+  margin: 0;
+  display: flex;
+  margin-top: 10px;
+}
+
+.carconditioncheckboxs input {}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loader {
+  position: relative;
+  width: 165px;
+  height: 165px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.loader span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border: 2px solid black;
+  pointer-events: none;
+  animation: animate 5s linear infinite;
+}
+
+.loader h2 {
+  color: black;
+  font-size: 18px;
+}
+
+.loader span:nth-child(1) {
+  border-radius: 38% 62% 64% 36% / 43% 35% 65% 57%;
+}
+
+.loader span:nth-child(2) {
+  animation-direction: reverse;
+  border-radius: 41% 59% 40% 60% / 65% 66% 34% 35%;
+}
+
+.loader span:nth-child(3) {
+  animation-duration: 3s;
+  border-radius: 73% 27% 56% 44% / 57% 74% 26% 43%;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+h2 {
+  color: #fff;
+  font-weight: 500;
+  font-family: consolas;
+}
+
+.notnumber {}
+
+.notnumberp {
+  position: absolute;
+  left: 0;
+  width: 98%;
+  background: rgb(219, 27, 27);
+  padding: 3px 11px;
+  color: white;
+  font-size: 13px;
 }

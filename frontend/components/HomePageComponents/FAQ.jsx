@@ -19,7 +19,7 @@ const FAQ = () => {
                 </details>
 
                 <details className='details'>
-                    <summary className='faqsumarry'>How do I schedule my car's appointment?</summary>
+                    <summary className='faqsumarry'>How do I schedule my car`&apos;`s appointment?</summary>
                     <p className='faqdetail'>
                         I have got my car repaired at Finsweet many times before,
                         they are good at what they do. Not only did they repair my

@@ -8,8 +8,6 @@ class ServicesSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'name',
-            'price',
-            'body',
             'image'
         )
         model = Service

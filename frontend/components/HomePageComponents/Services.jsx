@@ -16,22 +16,25 @@ const Services = () => {
             })
     })
 
+    if (!Services) return "Loading..."
+    if (!Services) return "Error!"
+
     //Send Zip Code
     const gotozipcodepage = (data) => {
         router.push({
             pathname: 'ZipCode',
             query: {
-                name: data.name,
-                price: data.price,
-                body: data.body,
-                image: data.image
+                name: data.item_data.name,
+                price: data.item_data.variations[0].item_variation_data.price_money.amount,
+                body: data.item_data.description,
+                variation_datas: JSON.stringify(data)
             }
         })
     }
 
 
     return (
-        <div className='Services'>
+        <div className='Services' id='services'>
             <div className="servicesmain">
                 <p className="wwOsp">What we Offer</p>
                 <p className="wwoph1">
@@ -39,16 +42,28 @@ const Services = () => {
                 </p>
 
                 <div className="services_">
-                    {Services && Services.map((service, index) => (
+                    {Services.catalog.objects && Services.catalog.objects.map((service, index) => (
                         <div className="service" key={index}>
-                            <img src={BackendLink + service.image} alt="service_img" />
+                            {Services.services && Services.services.map((image, index) => {
+                                if (image.name === service.item_data.name) {
+                                    return (
+                                        <img
+                                            key={index}
+                                            src={BackendLink + image.image}
+                                            alt="service_img"
+                                        />
+                                    )
+                                }
+                            })}
 
                             <div className="serveice_price">
                                 <p className="price_icon">$</p>
-                                <p className="actual_name">{service.price}</p>
+                                <p className="actual_name">
+                                    {service.item_data.variations[0].item_variation_data.price_money.amount}
+                                </p>
                             </div>
-                            <p className="service_name">{service.name}</p>
-                            <p className="service_des">{service.body}</p>
+                            <p className="service_name">{service.item_data.name}</p>
+                            <p className="service_des">{service.item_data.description}</p>
                             <button className="service_booking_btn"
                                 onClick={() => gotozipcodepage(service)}
                             >
