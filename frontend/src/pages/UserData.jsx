@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
-import { useRouter } from 'next/router'
+import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import Header from '../utils/Header';
 import Footer from '../utils/Footer';
+import axios from 'axios';
+import { BackendLink } from '../utils/BackendLink';
 
 const Userdata = () => {
+    const { state } = useLocation();
+    const navigate = useNavigate();
+    const data = state;
+
     //Get data from previous page
-    const router = useRouter();
-    const data = router.query;
     const [loadign, setloadign] = useState(false)
     const [NumberOrnot, setNumberOrnot] = useState(false)
 
@@ -50,35 +55,52 @@ const Userdata = () => {
         const ok = re.test(PhoneNumber);
         setloadign(true)
 
+        //Get user or create one
         if (ok) {
             try {
-                router.push({
-                    pathname: 'Calender',
-                    query: {
-                        name: data.name,
-                        price: data.price,
-                        body: data.body,
-                        zipcode: data.zipcode,
-                        Appertment: data.Appertment,
-                        Mold: data.Mold,
-                        PetHair: data.PetHair,
-                        Good: data.Good,
-                        Bad: data.Bad,
-                        Excellent: data.Excellent,
-                        Car: data.Car,
-                        FirstName,
-                        LastName,
-                        Email,
-                        PhoneNumber,
-                        PhoneCallMe,
-                        EmailMe,
-                        TextMe,
-                        variation_datas: JSON.stringify(JSON.parse(data.variation_datas))
-                    }
+                axios.post(`${BackendLink}/api/booking/user`, {
+                    email: Email,
+                    FirstName,
+                    LastName,
+                    PhoneNumber
                 })
-            } catch (error) {
-                console.log(error);
-                setloadign(false)
+                    .then((res) => {
+                        if (res.data.userstatus === "exists") {
+                            try {
+                                navigate('/calender', {
+                                    state: {
+                                        name: data.name,
+                                        price: data.price,
+                                        body: data.body,
+                                        zipcode: data.zipcode,
+                                        Appertment: data.Appertment,
+                                        Mold: data.Mold,
+                                        PetHair: data.PetHair,
+                                        Good: data.Good,
+                                        Bad: data.Bad,
+                                        Excellent: data.Excellent,
+                                        Car: data.Car,
+                                        FirstName,
+                                        LastName,
+                                        Email,
+                                        PhoneNumber,
+                                        PhoneCallMe,
+                                        EmailMe,
+                                        TextMe,
+                                        userID: res.data.userid,
+                                        variation_datas: JSON.stringify(JSON.parse(data.variation_datas))
+                                    }
+                                })
+                            } catch (error) {
+                                console.log(error);
+                                setloadign(false)
+                            }
+                        } else {
+                            console.log("eror");
+                        }
+                    });
+            } catch {
+                console.log("error!!");
             }
         } else {
             setNumberOrnot(true)
@@ -114,7 +136,7 @@ const Userdata = () => {
                             onChange={e => setPhoneNumber(e.target.value)}
                         /> :
                         <>
-                            <span style={{position: "relative"}}>
+                            <span style={{ position: "relative" }}>
                                 <input
                                     className='notnumber'
                                     type="text"
@@ -138,7 +160,7 @@ const Userdata = () => {
                                 onChange={checkUncheck}
                                 name="phonecall"
                             />
-                            <label style={{marginLeft: "10px"}}>Phone Call</label>
+                            <label style={{ marginLeft: "10px" }}>Phone Call</label>
                         </div>
 
                         <div className="contact_me_by_check">
@@ -148,7 +170,7 @@ const Userdata = () => {
                                 onChange={checkUncheck}
                                 name="email"
                             />
-                            <label style={{marginLeft: "10px"}}>Email</label>
+                            <label style={{ marginLeft: "10px" }}>Email</label>
                         </div>
 
                         <div className="contact_me_by_check">
@@ -158,7 +180,7 @@ const Userdata = () => {
                                 onChange={checkUncheck}
                                 name="sms"
                             />
-                            <label style={{marginLeft: "10px"}}>SMS/text</label>
+                            <label style={{ marginLeft: "10px" }}>SMS/text</label>
                         </div>
                     </div>
                 </div>

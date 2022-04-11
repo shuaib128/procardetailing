@@ -3,13 +3,16 @@ import { BsFillHouseFill } from 'react-icons/bs';
 import { GiMoldova } from 'react-icons/gi';
 import { MdPets } from 'react-icons/md';
 import { AiFillCar } from 'react-icons/ai';
-import { useRouter } from 'next/router'
+import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import Header from '../utils/Header';
 import Footer from '../utils/Footer';
 
 const Agree = () => {
-    const router = useRouter();
-    const data = router.query;
+    const { state } = useLocation();
+    const navigate = useNavigate();
+    const data = state;
+
     const [loading, setloading] = useState(false)
 
     const [Appertment, setAppertment] = useState(false)
@@ -25,9 +28,8 @@ const Agree = () => {
         setloading(true)
         if (Appertment && Car !== "" && Bad || Excellent || Good) {
             try {
-                router.push({
-                    pathname: '/Userdata',
-                    query: {
+                navigate('/userdata', {
+                    state: {
                         name: data.name,
                         price: data.price,
                         body: data.body,

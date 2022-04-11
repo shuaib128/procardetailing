@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'next/link'
+import { Link } from 'react-router-dom';
 import { IoCall } from 'react-icons/io5';
 import { AiOutlineMenu } from 'react-icons/ai';
 
@@ -12,7 +12,7 @@ const Header = () => {
     return (
         <div className='Header'>
             <div className="header_main">
-                <Link href="/">
+                <Link to="/">
                     <div className="logo">
                         <p className='logoone'>L&M Pro Car</p>
                         <p className='logotwo'>Detailing</p>
@@ -21,11 +21,11 @@ const Header = () => {
 
                 <div className="nav_call_number">
                     <div className="navs">
-                        <Link href="/">Home</Link>
-                        <Link href="/about">About</Link>
-                        <Link href="#services">Services</Link>
-                        <Link href="/contact">Contact</Link>
-                        <Link href="/monthly-packages">Monthly Packages</Link>
+                        <Link to="/">Home</Link>
+                        <Link to="/about">About</Link>
+                        <a href='#services'>Services</a>
+                        <Link to="/contact">Contact</Link>
+                        <Link to="/monthly-packages">Monthly Packages</Link>
                     </div>
                     <div className="call_number">
                         <div className="call_icn_div">
@@ -46,11 +46,11 @@ const Header = () => {
 
                     <div className="main_hidden_header">
                         <div className="navshidden">
-                            <Link href="/">Home</Link>
-                            <Link href="/about">About</Link>
-                            <Link href="/services">Services</Link>
-                            <Link href="/contact">Contact</Link>
-                            <Link href="/monthly-packages">Monthly Packages</Link>
+                            <Link to="/">Home</Link>
+                            <Link to="/about">About</Link>
+                            <Link to="/services">Services</Link>
+                            <Link to="/contact">Contact</Link>
+                            <Link to="/monthly-packages">Monthly Packages</Link>
                         </div>
                         <div className="call_number call_number_hidden">
                             <div className="call_icn_div">

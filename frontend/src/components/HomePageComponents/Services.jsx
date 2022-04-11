@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { BackendLink } from '../../utils/BackendLink'
 import axios from 'axios'
-import { useRouter } from 'next/router'
+import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
-    const router = useRouter();
+    const navigate = useNavigate();
 
     //Get all services
     const [Services, setServices] = useState(() => {
@@ -21,15 +21,17 @@ const Services = () => {
 
     //Send Zip Code
     const gotozipcodepage = (data) => {
-        router.push({
-            pathname: 'ZipCode',
-            query: {
-                name: data.item_data.name,
-                price: data.item_data.variations[0].item_variation_data.price_money.amount,
-                body: data.item_data.description,
-                variation_datas: JSON.stringify(data)
+        navigate(
+            '/zipcode',
+            {
+                state: {
+                    name: data.item_data.name,
+                    price: data.item_data.variations[0].item_variation_data.price_money.amount,
+                    body: data.item_data.description,
+                    variation_datas: JSON.stringify(data)
+                }
             }
-        })
+        )
     }
 
 

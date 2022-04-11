@@ -89,7 +89,7 @@ class BookingView(APIView):
             "booking": {
             "start_at": data["date"],
             "location_id": "L7RNA484FAVSC",
-            "customer_id": "VDS4VQH6GWYAKC4SQMMEHYVJX4",
+            "customer_id": data["userID"],
             "customer_note": data["user_message"],
             "seller_note": seller_note,
             "appointment_segments": [
@@ -112,5 +112,61 @@ class BookingView(APIView):
         response = Response()
         response.data = {
             'inarea': "inarea"
+        }
+        return response
+
+
+
+#User create or retrive view
+class UserView(APIView):
+    parser_classes = [MultiPartParser, FormParser, JSONParser]
+
+    def post(self, request, format=None):
+        firstname = request.data["FirstName"]
+        lastname = request.data["LastName"]
+        email = request.data["email"]
+        number = request.data["PhoneNumber"]
+        userstatus = None
+        userID = None
+
+        result = client.customers.search_customers(
+        body = {
+            "query": {
+                "filter": {
+                        "email_address": {
+                            "exact": email
+                        }
+                    }
+                }
+            }
+        )
+
+
+        if result.is_success() and len(result.body) != 0:
+            # print(result.body)
+            userstatus = "exists"
+            userID = result.body["customers"][0]["id"]
+        elif result.is_error() or len(result.body) == 0:
+            result = client.customers.create_customer(
+            body = {
+                    "given_name": firstname,
+                    "family_name": lastname,
+                    "email_address": email,
+                    "address": {},
+                    "phone_number": number
+                }
+            )
+            if result.is_success():
+                print(result.body)
+                userstatus = "exists"
+                userID = result.body["customer"]['id']
+            elif result.is_error():
+                print(result.errors)
+                userstatus = "notexists"
+
+        response = Response()
+        response.data = {
+            'userstatus': userstatus,
+            "userid": userID
         }
         return response

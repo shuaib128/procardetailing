@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { useRouter } from 'next/router'
+import { useLocation } from 'react-router-dom'
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import TimePicker from '@mui/lab/TimePicker';
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { BackendLink } from '../utils/BackendLink';
 import axios from 'axios';
 import Header from '../utils/Header';
@@ -21,21 +23,10 @@ const Calender = () => {
     const handleChange = (newValue) => {
         setValue(newValue);
     };
-    const handleTimeChange = (newValue) => {
-        setTimeValue(newValue);
-    };
 
     //Get data from previous page
-    const router = useRouter();
-    const data = router.query;
-
-    //Block random days in calender
-    function disableRandomDates() {
-        return Math.random() > 0.7;
-    }
-    function disableRandomTimes() {
-        return Math.random() > 0.3;
-    }
+    const { state } = useLocation();
+    const data = state;
 
     //Send data to payment
     const confirmBooking = () => {
@@ -58,24 +49,14 @@ const Calender = () => {
         <>
             <Header />
             <div className='calender zipcodefield'>
-                <p className="whreal" style={{marginBottom: 50}}>Last step! How can we reach you?</p>
+                <p className="whreal" style={{ marginBottom: 50 }}>Last step! How can we reach you?</p>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <Stack spacing={3}>
-                        <DesktopDatePicker
-                            label="Date desktop"
-                            inputFormat="MM/dd/yyyy"
+                        <DateTimePicker
+                            label="Date&Time picker"
                             value={value}
                             onChange={handleChange}
                             renderInput={(params) => <TextField {...params} />}
-                            shouldDisableDate={disableRandomDates}
-                        />
-
-                        <TimePicker
-                            label="Time"
-                            value={TimeValue}
-                            onChange={handleTimeChange}
-                            renderInput={(params) => <TextField {...params} />}
-                            shouldDisableTime={disableRandomTimes}
                         />
                     </Stack>
 

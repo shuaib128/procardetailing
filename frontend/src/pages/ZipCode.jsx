@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { BackendLink } from '../utils/Backendlink'
-import { useRouter } from 'next/router'
+import { BackendLink } from '../utils/BackendLink'
+import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import Header from '../utils/Header'
 import Footer from '../utils/Footer'
 
 const ZipCode = () => {
-    const router = useRouter();
-    const data = router.query;
-    const [loading, setloading] = useState(false)
+    const { state } = useLocation();
+    const navigate = useNavigate();
+    const data = state;
 
+    const [loading, setloading] = useState(false)
     const [ZipCode, setZipCode] = useState()
 
     const sendzipcode = () => {
@@ -21,9 +23,8 @@ const ZipCode = () => {
             .then((res) => {
                 if (res.data.inarea) {
                     try {
-                        router.push({
-                            pathname: 'Varition',
-                            query: {
+                        navigate('/varition', {
+                            state: {
                                 name: data.name,
                                 price: data.price,
                                 body: data.body,

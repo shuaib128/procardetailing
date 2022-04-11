@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
-import { useRouter } from 'next/router'
+import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import Header from '../utils/Header';
 import Footer from '../utils/Footer';
 
 const Varition = () => {
+    const { state } = useLocation();
+    const navigate = useNavigate();
+    const data = state;
+
     const [Loading, setLoading] = useState(false)
-    const router = useRouter();
-    const data = router.query;
     var varitions
 
     try {
@@ -18,9 +21,8 @@ const Varition = () => {
     function sendVaritionData(variation_data) {
         setLoading(true)
         try {
-            router.push({
-                pathname: '/Agree',
-                query: {
+            navigate('/agree', {
+                state: {
                     name: data.name,
                     price: data.price,
                     body: data.body,
