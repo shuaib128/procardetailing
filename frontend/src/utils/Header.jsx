@@ -14,26 +14,29 @@ const Header = () => {
             <div className="header_main">
                 <Link to="/">
                     <div className="logo">
-                        <p className='logoone'>L&M Pro Car</p>
-                        <p className='logotwo'>Detailing</p>
+                        <img src="images/logo.jpeg" alt="logo" />
+                        <div>
+                            <p className='logoone'>L&M Pro Car</p>
+                            <p className='logotwo'>Detailing</p>
+                        </div>
                     </div>
                 </Link>
 
                 <div className="nav_call_number">
                     <div className="navs">
-                        <Link to="/">Home</Link>
-                        <Link to="/about">About</Link>
+                        <a href='#billbord'>Home</a>
+                        <a href='#aboout'>About</a>
                         <a href='#services'>Services</a>
-                        <Link to="/contact">Contact</Link>
-                        <Link to="/monthly-packages">Monthly Packages</Link>
+                        <a href='#footer'>Contact</a>
+                        <a href='#faq'>FAQ</a>
                     </div>
                     <div className="call_number">
                         <div className="call_icn_div">
                             <IoCall size={22} color='white' className='callIcon' />
                         </div>
                         <div className="num">
-                            <p className='roada'>Road Assistance</p>
-                            <p className='phonenum'>1800 265 24 52</p>
+                            <p className='roada'>Call Us</p>
+                            <p className='phonenum'>(425) 329-9364</p>
                         </div>
                     </div>
                 </div>

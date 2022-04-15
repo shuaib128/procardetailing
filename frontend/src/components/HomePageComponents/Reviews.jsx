@@ -34,90 +34,73 @@ const Reviews = () => {
             <div className="ReviewsMain">
                 <div className="review">
                     <div className="reviewTop">
-                        <img src="https://assets.website-files.com/612fdeb7f6d78c5ad5dc23f8/6142ff7c6369541c54dff0eb_Testimonials%202-p-500.jpeg" alt="revimage" />
+                        <img src="images/revs/1.jpg" alt="revimage" />
                         <div className="nameandfrom">
-                            <p className="revname">Jonathan Vallem</p>
-                            <p className="revlocation">New York</p>
+                            <p className="revname">Ashley Donnell</p>
+                            <p className="revlocation">December 14, 2021</p>
                         </div>
                     </div>
 
                     <div className="reviewdes">
                         <p className="mainrevdes">
-                            I have got my car repaired at Finsweet many times before,
-                            they are good at what they do. Not only did they repair my
-                            car in a short comprehensive look on all the working
+                            Very happy with Laurance’s work. Car looks and smell like new,
+                            in spite of my three dogs and my own farm and stable work.
                         </p>
                     </div>
                 </div>
 
                 <div className="review">
                     <div className="reviewTop">
-                        <img src="https://assets.website-files.com/612fdeb7f6d78c5ad5dc23f8/6142ff7c6369541c54dff0eb_Testimonials%202-p-500.jpeg" alt="revimage" />
+                        <img src="images/revs/2.jpg" alt="revimage" />
                         <div className="nameandfrom">
-                            <p className="revname">Jonathan Vallem</p>
-                            <p className="revlocation">New York</p>
+                            <p className="revname">April Anderson</p>
+                            <p className="revlocation">November 12 2021</p>
                         </div>
                     </div>
 
                     <div className="reviewdes">
                         <p className="mainrevdes">
-                            I have got my car repaired at Finsweet many times before,
-                            they are good at what they do. Not only did they repair my
-                            car in a short comprehensive look on all the working
+                            Excellent, friendly, efficient service. Laurance pulls up with
+                            everything ready to clean up your car! Highly recommend and will use again.
+                            He didn't even mind working in the rain!👍
                         </p>
                     </div>
                 </div>
 
                 <div className="review">
                     <div className="reviewTop">
-                        <img src="https://assets.website-files.com/612fdeb7f6d78c5ad5dc23f8/6142ff7c6369541c54dff0eb_Testimonials%202-p-500.jpeg" alt="revimage" />
+                        <img src="images/revs/3.jpg" alt="revimage" />
                         <div className="nameandfrom">
-                            <p className="revname">Jonathan Vallem</p>
-                            <p className="revlocation">New York</p>
+                            <p className="revname">Christin Loomis-Palmer</p>
+                            <p className="revlocation">June 9 2021</p>
                         </div>
                     </div>
 
                     <div className="reviewdes">
                         <p className="mainrevdes">
-                            I have got my car repaired at Finsweet many times before,
-                            they are good at what they do. Not only did they repair my
-                            car in a short comprehensive look on all the working
+                            Pro Car Detailing did an outstanding job on my daughter’s car.
+                            It hadn’t been cleaned since she got it. Looks brand new.
+                            Would definitely recommend their services again. Well worth the $.
                         </p>
                     </div>
                 </div>
 
                 <div className="review">
                     <div className="reviewTop">
-                        <img src="https://assets.website-files.com/612fdeb7f6d78c5ad5dc23f8/6142ff7c6369541c54dff0eb_Testimonials%202-p-500.jpeg" alt="revimage" />
+                        <img src="images/revs/4.jpg" alt="revimage" />
                         <div className="nameandfrom">
-                            <p className="revname">Jonathan Vallem</p>
-                            <p className="revlocation">New York</p>
+                            <p className="revname">Danny Almeida</p>
+                            <p className="revlocation">March 26 2021</p>
                         </div>
                     </div>
 
                     <div className="reviewdes">
                         <p className="mainrevdes">
-                            I have got my car repaired at Finsweet many times before,
-                            they are good at what they do. Not only did they repair my
-                            car in a short comprehensive look on all the working
-                        </p>
-                    </div>
-                </div>
-
-                <div className="review">
-                    <div className="reviewTop">
-                        <img src="https://assets.website-files.com/612fdeb7f6d78c5ad5dc23f8/6142ff7c6369541c54dff0eb_Testimonials%202-p-500.jpeg" alt="revimage" />
-                        <div className="nameandfrom">
-                            <p className="revname">Jonathan Vallem</p>
-                            <p className="revlocation">New York</p>
-                        </div>
-                    </div>
-
-                    <div className="reviewdes">
-                        <p className="mainrevdes">
-                            I have got my car repaired at Finsweet many times before,
-                            they are good at what they do. Not only did they repair my
-                            car in a short comprehensive look on all the working
+                            Love this service! They come to you and make your car look like new!
+                            I got both interior and exterior service from them and I was very impressed!
+                            These guys are pro’s at what they do. My car came out looking nice and
+                            clean when they were done with it. Literally spotless both inside and out.
+                            Highly recommend this service!
                         </p>
                     </div>
                 </div>

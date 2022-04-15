@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 const BillBord = () => {
     return (
-        <div className='BillBord'>
+        <div className='BillBord' id='billbord'>
             <motion.div className="billbord_left"
                 initial={{ y: 35, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -14,7 +14,7 @@ const BillBord = () => {
                     Get your vehicle service done online at one place
                 </p>
                 <button className='billbord_button'>
-                    Book a service
+                    <a href="#services">Book a service</a>
                 </button>
                 <div className="billbord_open_scauale">
                     <AiOutlineClockCircle color='rgb(185 189 192)' size={32} className="scauale_icon" />
@@ -30,7 +30,7 @@ const BillBord = () => {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: .7 }}
             >
-                <img className='billbordmainimg' src="images/billboedmainimg.jpg" alt="billbord-main-img" />
+                <img className='billbordmainimg' src="images/billboedmainimg.jpeg" alt="billbord-main-img" />
                 <div className="QS_block">
                     <div className="block_time">
                         <span style={{

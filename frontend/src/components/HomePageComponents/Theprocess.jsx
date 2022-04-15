@@ -2,7 +2,7 @@ import React from 'react'
 
 const Theprocess = () => {
     return (
-        <div className='theprocess'>
+        <div className='theprocess' id='aboout'>
             <div className="theprecoesingdes">
                 <p className='whatwegivetext'>We follow a clear process to help you out.</p>
                 <p className='whatwegiveboxtdetail theprocessdetail'>

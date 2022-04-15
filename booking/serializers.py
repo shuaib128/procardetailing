@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Service
+from .models import Service, Appointment
 
 
 # Services serilizer
@@ -11,3 +11,12 @@ class ServicesSerializer(serializers.ModelSerializer):
             'image'
         )
         model = Service
+
+
+# Appointment serilizer
+class AppointentSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'date',
+        )
+        model = Appointment

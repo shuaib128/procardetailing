@@ -4,7 +4,7 @@ import { FaTiktok } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <div className='Footer'>
+        <div className='Footer' id='footer'>
             <div className="footerTop">
                 <div className="footertopmain">
                     <div className="footertopleft">
@@ -19,12 +19,12 @@ const Footer = () => {
                     <div className="footertopright">
                         <div className="footerrightblock">
                             <p className="footerblocktop">Help line Number</p>
-                            <p className="footerblockdown">1800 265 24 52</p>
+                            <p className="footerblockdown">(425) 329-9364</p>
                         </div>
 
                         <div className="footerrightblock">
                             <p className="footerblocktop">Address</p>
-                            <p className="footerblockdown">NH 234  Public Square San Francisco  65368</p>
+                            <p className="footerblockdown">laurancemajali@gmail.com</p>
                         </div>
 
                         <div className="footerrightblock">

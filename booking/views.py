@@ -1,8 +1,9 @@
+from datetime import date
 from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Service, Area
-from .serializers import ServicesSerializer
+from .models import Service, Area, Appointment
+from .serializers import ServicesSerializer, AppointentSerializer
 import json
 
 # Square API
@@ -71,6 +72,7 @@ class BookingView(APIView):
 
     def post(self, request, format=None):
         #Client Message
+        booked = None
         data = request.data["data"]
         varition_data = json.loads(request.data["variation_datas"])
 
@@ -81,7 +83,7 @@ class BookingView(APIView):
         hair_condetion = "Car has pet hair" if data["PetHair"] == 'true' else "Car has no pet hair"
         car = data["Car"]
         car_condetion = "Car condetion: Bad" if data["Bad"] == 'true' else "Car condetion: Good" if data["Good"] == 'true' else "Car condetion: Excellent"
-        seller_note = f"{appertment_condetion}\n {mold_ondetion}\n {hair_condetion}\n {car}\n {car_condetion}"
+        seller_note = f"\n{appertment_condetion}\n {mold_ondetion}\n {hair_condetion}\n {car}\n {car_condetion}"
 
         #Booking data
         result = client.bookings.create_booking(
@@ -104,14 +106,21 @@ class BookingView(APIView):
         }
         )
 
+        Appointment.objects.create(
+            date = data["date"]
+        )
+
+
         if result.is_success():
             print(result.body)
+            booked = "booked"
         elif result.is_error():
             print(result.errors)
+            booked = "failed"
 
         response = Response()
         response.data = {
-            'inarea': "inarea"
+            "booked" : booked
         }
         return response
 
@@ -170,3 +179,16 @@ class UserView(APIView):
             "userid": userID
         }
         return response
+
+
+
+
+#Check if any other appointment
+class AppointmentCheckView(APIView):
+    parser_classes = [MultiPartParser, FormParser, JSONParser]
+
+    def post(self, request, format=None):
+        appointments = Appointment.objects.all()
+
+        serilizer = AppointentSerializer(appointments, many=True)
+        return Response(serilizer.data)

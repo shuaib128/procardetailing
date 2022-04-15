@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BackendLink } from '../utils/BackendLink'
 import { useLocation } from 'react-router-dom'
@@ -7,6 +7,10 @@ import Header from '../utils/Header'
 import Footer from '../utils/Footer'
 
 const ZipCode = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     const { state } = useLocation();
     const navigate = useNavigate();
     const data = state;

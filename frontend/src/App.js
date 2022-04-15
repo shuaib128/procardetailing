@@ -8,6 +8,7 @@ import Variation from './pages/Variation';
 import Agree from './pages/Agree';
 import Userdata from './pages/UserData';
 import Calender from './pages/Calender';
+import Confirm from './pages/Confirm';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/agree" element={<Agree />} />
         <Route path="/userdata" element={<Userdata />} />
         <Route path="/calender" element={<Calender />} />
+        <Route path="/confirm" element={<Confirm />} />
       </Routes>
     </div>
   );

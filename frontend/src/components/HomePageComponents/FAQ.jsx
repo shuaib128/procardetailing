@@ -2,7 +2,7 @@ import React from 'react'
 
 const FAQ = () => {
     return (
-        <div className='FAQ'>
+        <div className='FAQ' id='faq'>
             <p className="wwoph1 wwoph1rev">
                 Frequently Asked Questions
             </p>

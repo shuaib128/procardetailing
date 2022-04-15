@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BsFillHouseFill } from 'react-icons/bs';
 import { GiMoldova } from 'react-icons/gi';
 import { MdPets } from 'react-icons/md';
@@ -9,6 +9,10 @@ import Header from '../utils/Header';
 import Footer from '../utils/Footer';
 
 const Agree = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     const { state } = useLocation();
     const navigate = useNavigate();
     const data = state;
