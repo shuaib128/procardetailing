@@ -46,18 +46,6 @@ const Services = () => {
                 <div className="services_">
                     {Services.catalog.objects && Services.catalog.objects.map((service, index) => (
                         <div className="service" key={index}>
-                            {Services.services && Services.services.map((image, index) => {
-                                if (image.name === service.item_data.name) {
-                                    return (
-                                        <img
-                                            key={index}
-                                            src={BackendLink + image.image}
-                                            alt="service_img"
-                                        />
-                                    )
-                                }
-                            })}
-
                             <div className="serveice_price">
                                 <p className="price_icon">$</p>
                                 <p className="actual_name">

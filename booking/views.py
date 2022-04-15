@@ -2,8 +2,8 @@ from datetime import date
 from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Service, Area, Appointment
-from .serializers import ServicesSerializer, AppointentSerializer
+from .models import Area, Appointment
+from .serializers import AppointentSerializer
 import json
 
 # Square API
@@ -25,17 +25,10 @@ class ServicesView(APIView):
             catalog = result_catalog.body
         elif result_catalog.is_error():
             catalog = result_catalog.errors
-
-        #Get 
-
-        # Get services images from django
-        services = Service.objects.all()
-        servicesSerilizer = ServicesSerializer(services, many=True)
         
         response = Response()
         response.data = {
             'catalog': catalog,
-            'services': servicesSerilizer.data
         }
         return response
 
