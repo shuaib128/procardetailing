@@ -30,6 +30,10 @@
     .footertopmain {
         width: 90%;
     }
+
+    .ServicesLoadings {
+        width: 90%;
+    }
 }
 
 
@@ -164,6 +168,11 @@
     .userdata_block input {
         width: 100%;
     }
+
+    .ServicesLoadings {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
 }
 
 
@@ -234,5 +243,10 @@
 
     .monthoneday {
         padding: 10px 0px;
+    }
+
+    .ServicesLoadings {
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
 }

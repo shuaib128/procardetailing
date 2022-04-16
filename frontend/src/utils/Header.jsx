@@ -24,11 +24,11 @@ const Header = () => {
 
                 <div className="nav_call_number">
                     <div className="navs">
-                        <a href='#billbord'>Home</a>
-                        <a href='#aboout'>About</a>
-                        <a href='#services'>Services</a>
-                        <a href='#footer'>Contact</a>
-                        <a href='#faq'>FAQ</a>
+                        <a href='/' onClick={window.scrollTo(0, 0)}>Home</a>
+                        <a href='/#aboout'>About</a>
+                        <a href='/#services'>Services</a>
+                        <a href='/#footer'>Contact</a>
+                        <a href='/#faq'>FAQ</a>
                     </div>
                     <div className="call_number">
                         <div className="call_icn_div">

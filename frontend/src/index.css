@@ -1294,3 +1294,12 @@ select::-ms-expand {
   text-align: center;
   margin-bottom: 150px;
 }
+
+.ServicesLoadings {
+  margin: 0 auto;
+  width: 80rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 31px;
+  margin-bottom: 86px;
+}

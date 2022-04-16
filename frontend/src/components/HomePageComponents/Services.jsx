@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { BackendLink } from '../../utils/BackendLink'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import ServicesLoading from './ServicesLoading';
 
 const Services = () => {
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Services = () => {
             })
     })
 
-    if (!Services) return "Loading..."
+    if (!Services) return <ServicesLoading />
     if (!Services) return "Error!"
 
     //Send Zip Code
@@ -44,16 +45,16 @@ const Services = () => {
                 </p>
 
                 <div className="services_">
-                    {Services.catalog.objects && Services.catalog.objects.map((service, index) => (
+                    {Services && Services.catalog.objects.map((service, index) => (
                         <div className="service" key={index}>
                             <div className="serveice_price">
                                 <p className="price_icon">$</p>
                                 <p className="actual_name">
-                                    {service.item_data.variations[0].item_variation_data.price_money.amount}
+                                    {service && service.item_data.variations[0].item_variation_data.price_money.amount}
                                 </p>
                             </div>
-                            <p className="service_name">{service.item_data.name}</p>
-                            <p className="service_des">{service.item_data.description}</p>
+                            <p className="service_name">{service && service.item_data.name}</p>
+                            <p className="service_des">{service && service.item_data.description}</p>
                             <button className="service_booking_btn"
                                 onClick={() => gotozipcodepage(service)}
                             >

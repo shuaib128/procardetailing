@@ -96,11 +96,15 @@ const Userdata = () => {
                                     }
                                 })
                             } catch (error) {
+                                alert("Use a valid E-mail adress")
                                 console.log(error);
                                 setloadign(false)
                             }
                         } else {
                             console.log("eror");
+                            console.log(res.data);
+                            setloadign(false)
+                            alert("Use a valid E-mail adress")
                         }
                     });
             } catch {
@@ -119,31 +123,36 @@ const Userdata = () => {
                 <p className="whreal">Last step! How can we reach you?</p>
                 <div className="userdata_block">
                     <input
+                        required
                         type="text"
                         placeholder='First Name'
                         onChange={e => setFirstName(e.target.value)}
                     />
                     <input
+                        required
                         type="text"
                         placeholder='Last Name'
                         onChange={e => setLastName(e.target.value)}
                     />
                     <input
-                        type="text"
+                        required
+                        type="email"
                         placeholder='Email'
                         onChange={e => setEmail(e.target.value)}
                     />
                     {!NumberOrnot ?
                         <input
-                            type="text"
+                            required
+                            type="number"
                             placeholder='Phone Number'
                             onChange={e => setPhoneNumber(e.target.value)}
                         /> :
                         <>
                             <span style={{ position: "relative" }}>
                                 <input
+                                    required
                                     className='notnumber'
-                                    type="text"
+                                    type="number"
                                     placeholder='Phone Number'
                                     onChange={e => setPhoneNumber(e.target.value)}
                                 />
@@ -189,15 +198,24 @@ const Userdata = () => {
                     </div>
                 </div>
 
-                {!loadign ?
+                {!loadign && Email && FirstName && LastName && PhoneNumber ?
                     <button className="service_booking_btn"
                         onClick={gotopayments}
                     >
                         Next
-                    </button> :
-                    <button className="service_booking_btn" disabled>
-                        Loading...
-                    </button>
+                    </button> : loadign ?
+                        <button className="service_booking_btn" disabled>
+                            Loading...
+                        </button> :
+                        <button className="service_booking_btn"
+                            disabled
+                            style={{
+                                opacity: .4,
+                                cursor: 'default'
+                            }}
+                        >
+                            Next
+                        </button>
                 }
             </div>
             <Footer />
