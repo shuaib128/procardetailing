@@ -24,7 +24,7 @@ const Header = () => {
 
                 <div className="nav_call_number">
                     <div className="navs">
-                        <a href='/' onClick={window.scrollTo(0, 0)}>Home</a>
+                        <a href='/'>Home</a>
                         <a href='/#aboout'>About</a>
                         <a href='/#services'>Services</a>
                         <a href='/#footer'>Contact</a>

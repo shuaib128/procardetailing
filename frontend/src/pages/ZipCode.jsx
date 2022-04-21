@@ -7,10 +7,6 @@ import Header from '../utils/Header'
 import Footer from '../utils/Footer'
 
 const ZipCode = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
-
     const { state } = useLocation();
     const navigate = useNavigate();
     const data = state;

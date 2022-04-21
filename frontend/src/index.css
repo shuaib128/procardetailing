@@ -345,6 +345,7 @@ a {
   width: 80rem;
   padding-bottom: 100px;
   overflow: hidden;
+  align-items: center;
 }
 
 .whatweegive {
@@ -363,6 +364,10 @@ a {
 .homepagecontact {
   width: 50%;
   margin-left: 40px;
+}
+
+.homepagecontact img {
+  height: 600px;
 }
 
 .whatweegiveboxes {
@@ -671,6 +676,7 @@ a {
   padding-bottom: 100px;
   overflow: hidden;
   display: flex;
+  margin-top: 150px;
 }
 
 .review {
@@ -718,7 +724,7 @@ a {
 
 .revbuttons {
   position: absolute;
-  bottom: 122px;
+  top: 328px;
   display: flex;
   width: 80rem;
   left: 0;

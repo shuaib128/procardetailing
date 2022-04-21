@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { BackendLink } from '../utils/BackendLink';
 import axios from 'axios';
@@ -8,10 +8,6 @@ import Footer from '../utils/Footer';
 
 const Calender = () => {
     const navigate = useNavigate();
-    
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
 
     const [appointments, setappointmets] = useState(() => {
         axios.post(`${BackendLink}/api/booking/checkappointment`, {
@@ -22,6 +18,7 @@ const Calender = () => {
             });
     })
 
+    //Months name array
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
@@ -34,6 +31,7 @@ const Calender = () => {
     const [FinalTime, setFinalTime] = useState();
     const [AboutCar, setAboutCar] = useState("")
     const [Loading, setLoading] = useState(false)
+    const [avaibleTimes, setavaibleTimes] = useState()
 
     //Get data from previous page
     const { state } = useLocation();
@@ -43,7 +41,7 @@ const Calender = () => {
     //Send data to payment
     const confirmBooking = () => {
         setLoading(true)
-        Object.assign(data, { date: FinalTime, time: TimeValue, user_message: AboutCar })
+        Object.assign(data, { date_name: value, date: FinalTime, time: TimeValue, user_message: AboutCar })
 
         try {
             axios.post(`${BackendLink}/api/booking/book`, {
@@ -66,15 +64,28 @@ const Calender = () => {
     }
 
     //Set date for square api
+    var appointment_times = ["16", "18", "20", "22"]
     const setdate = (date, month, year) => {
         const date_utc = new Date(Date.UTC(year, month, date, 14))
         setValue(date_utc);
+
+        //Send api req for appointent avable
+        axios.post(`${BackendLink}/api/booking/checkappointmenttime`, {
+            time: date_utc,
+        })
+            .then((res) => {
+                setavaibleTimes(res.data.times);
+                console.log(res);
+            });
     }
+
 
     //Set time
     const setTime = (e) => {
         setFinalTime(new Date(Date.UTC(value.getUTCFullYear(), value.getUTCMonth(), value.getUTCDate(), e)));
+        setTimeValue(e)
     }
+
 
     //mark the clicked date
     const markdate = (e) => {
@@ -85,14 +96,28 @@ const Calender = () => {
         e.setAttribute("style", "background-color: black; color: white;");
     }
 
+
     if (!appointments) return "Loading..."
     if (!appointments) return "Error!"
 
+    //Getting the avaailable dates
     var appointemnts_list = []
-
     appointments.map((app, index) => {
-        appointemnts_list.push(new Date(app.date).getDate())
+        if (app.times.length === 4) {
+            appointemnts_list.push(new Date(app.date).getDate())
+        }
     })
+
+    //Geting the available times
+    if(avaibleTimes){
+        for (var i = 0; i < appointment_times.length; i++) {
+            for (var j = 0; j < avaibleTimes.length; j++) {
+                if(appointment_times[i] === avaibleTimes[j].time){
+                    appointment_times.splice(i, 1)
+                }
+            }
+        }
+    }
 
 
     return (
@@ -148,20 +173,18 @@ const Calender = () => {
                         </div>
 
 
-                        {value && value ?
-                            <div className="times">
-                                <div class="select">
-                                    <select name="format" id="format" onChange={(e) => setTime(e.target.value)}>
-                                        <option selected disabled>Choose Time</option>
-                                        <option value="16">9 AM</option>
-                                        <option value="18">11 AM</option>
-                                        <option value="20">1 PM</option>
-                                        <option value="22">3 PM</option>
-                                    </select>
-                                </div>
-                            </div> :
-                            <div></div>
-                        }
+                        <div className="times">
+                            <div class="select">
+                                <select name="format" id="format" onChange={(e) => setTime(e.target.value)}>
+                                    <option selected disabled>Choose Time</option>
+                                    {appointment_times && appointment_times.map((time, index) => {
+                                        return (
+                                            <option key={index} value={time}>{time} AM</option>
+                                        )
+                                    })}
+                                </select>
+                            </div>
+                        </div>
 
                         <textarea type="text"
                             className='user_message'

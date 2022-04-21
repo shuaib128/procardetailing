@@ -7,10 +7,6 @@ import axios from 'axios';
 import { BackendLink } from '../utils/BackendLink';
 
 const Userdata = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
-
     const { state } = useLocation();
     const navigate = useNavigate();
     const data = state;
@@ -102,7 +98,6 @@ const Userdata = () => {
                             }
                         } else {
                             console.log("eror");
-                            console.log(res.data);
                             setloadign(false)
                             alert("Use a valid E-mail adress")
                         }

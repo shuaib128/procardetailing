@@ -60,18 +60,7 @@ const ContactAndWhatWeGive = () => {
                 </div>
 
                 <div className="homepagecontact">
-                    <p className="gaqftcs">Get a quote for the car service</p>
-
-                    <div className="sendquotediv">
-                        <input placeholder='Enter your location' required type="text" />
-                        <input placeholder='Enter your vechile' required type="text" />
-                        <input placeholder='Select type' required type="text" />
-                        <input placeholder='Your phone number' required type="number" />
-                    </div>
-
-                    <button className='billbord_button'>
-                        Send message
-                    </button>
+                    <img src="images/care.jpeg" alt="careimage" />
                 </div>
             </div>
         </div>

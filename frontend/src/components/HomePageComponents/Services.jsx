@@ -50,7 +50,7 @@ const Services = () => {
                             <div className="serveice_price">
                                 <p className="price_icon">$</p>
                                 <p className="actual_name">
-                                    {service && service.item_data.variations[0].item_variation_data.price_money.amount}
+                                    {(service && service.item_data.variations[0].item_variation_data.price_money.amount / 100).toFixed(2)}
                                 </p>
                             </div>
                             <p className="service_name">{service && service.item_data.name}</p>
